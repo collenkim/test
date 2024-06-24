@@ -1,10 +1,12 @@
 package com.szs.test.interceptor;
 
 import com.szs.test.dto.JwtPayLoad;
+import com.szs.test.exception.InvalidAccessTokenException;
 import com.szs.test.util.JwtTokenUtil;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -19,6 +21,10 @@ public class AccessTokenInterceptor implements HandlerInterceptor {
 
         // AccessToken을 검증하고 처리하는 로직
         String accessToken = request.getHeader("Authorization");
+        if(StringUtils.isBlank(accessToken)){
+            throw new InvalidAccessTokenException("Access Token 정보가 없습니다.");
+        }
+
         if (isValidAccessToken(accessToken)) {
             // AccessToken 유효성 검증 성공
             return true;
