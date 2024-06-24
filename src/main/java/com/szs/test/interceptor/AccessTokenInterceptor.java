@@ -22,11 +22,11 @@ public class AccessTokenInterceptor implements HandlerInterceptor {
         if (isValidAccessToken(accessToken)) {
             // AccessToken 유효성 검증 성공
             return true;
-        } else {
-            // AccessToken 유효성 검증 실패 시 처리
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            return false;
         }
+
+        // AccessToken 유효성 검증 실패 시 처리
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        return false;
     }
 
     /**

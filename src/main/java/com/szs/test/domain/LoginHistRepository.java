@@ -1,0 +1,6 @@
+package com.szs.test.domain;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LoginHistRepository extends JpaRepository<LoginHistEntity, Long> {
+}

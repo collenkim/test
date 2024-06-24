@@ -31,3 +31,6 @@ springdoc:
   swagger-ui:
     path: /3o3/swagger-ui.html
 
+# jwt secretKey
+jwt:
+  secret: szs1!szs2@
